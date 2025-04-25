@@ -10,7 +10,7 @@ This project demonstrates the complete process of hosting a static website on Am
 <table style="width: 100%; margin-bottom: 20px;">
   <tr>
     <td align="center" style="padding: 10px; background-color: #e9f7f5; border-radius: 8px;">
-      <img src="https://github.com/arumullayaswanth/aws-s3-cloudfront-lambda-automation/blob/0b9854d831ab03e1d1a245714d102a5dc756c55e/AWS%20CloudFront%20architecture%20Project.png" width="1000%" style="border: 2px solid #ddd; border-radius: 10px;">
+      <img src="https://github.com/arumullayaswanth/aws-s3-cloudfront-lambda-automation/blob/6e35ab2788f670d2b77b442d6599126a72276d60/CloudFront%20architecture/AWS%20CloudFront%20architecture%20Project.png" width="1000%" style="border: 2px solid #ddd; border-radius: 10px;">
       <br><b>AWS CloudFront architecture Project </b>
     </td>
   </tr>
