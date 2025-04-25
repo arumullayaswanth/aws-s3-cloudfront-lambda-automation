@@ -7,6 +7,15 @@
 
 This project demonstrates the complete process of hosting a static website on Amazon S3 and distributing it via CloudFront, including an automated cache invalidation mechanism using AWS Lambda.
 
+<table style="width: 100%; margin-bottom: 20px;">
+  <tr>
+    <td align="center" style="padding: 10px; background-color: #e9f7f5; border-radius: 8px;">
+      <img src="https://github.com/arumullayaswanth/aws-s3-cloudfront-lambda-automation/blob/0b9854d831ab03e1d1a245714d102a5dc756c55e/AWS%20CloudFront%20architecture%20Project.png" width="1000%" style="border: 2px solid #ddd; border-radius: 10px;">
+      <br><b>AWS CloudFront architecture Project </b>
+    </td>
+  </tr>
+</table>
+
 ---
 
 ## 📂 1. Static Website Hosting on Amazon S3
@@ -82,7 +91,7 @@ This project demonstrates the complete process of hosting a static website on Am
   - **Object path:** `/*`
 - Click **Create invalidation**
 
-**note:**can we automate this process instead of doing manually every time (for example developers push the code every two days once we have to do  manually every time right otherwise old code only )
+**note:** can we automate this process instead of doing manually every time (for example developers push the code every two days once we have to do  manually every time right otherwise old code only )
 
 > 📝 This must be done every time developers push updates to S3 to avoid serving outdated content from cache.
 
