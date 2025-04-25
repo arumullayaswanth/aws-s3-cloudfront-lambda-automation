@@ -14,7 +14,7 @@ It is an clone website of BookMyShow that developed just using HTML, CSS and Jav
 
 
 ```
-git clone https://github.com/vu3tpz/BookMyShow-Clone
+git clone https://github.com/arumullayaswanth/aws-s3-cloudfront-lambda-automation.git
 ```
 
 
