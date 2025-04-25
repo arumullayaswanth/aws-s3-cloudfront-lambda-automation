@@ -197,6 +197,85 @@ def lambda_handler(event, context):
 
 ---
 
+
+
+# 🌍 Cross-Region Replication with S3 and CloudFront Origin Group
+
+This guide explains how to implement **Cross-Region Replication (CRR)** with Amazon S3 and use **CloudFront Origin Groups** for failover routing between the primary and replicated S3 buckets.
+
+---
+
+## 📦 Step 1: Setup Cross-Region Replication on S3
+
+### Step 1.1: Create Two Buckets
+- Go to **Amazon S3 > Buckets > Create bucket**
+- Create the **primary bucket**: `aluru.site` in `us-east-1`
+- Create the **replication bucket**: `aluru.site.replication` in another region (e.g., `us-west-1`)
+
+### Step 1.2: Enable Versioning
+- Enable **Versioning** on both buckets.
+
+### Step 1.3: Set Permissions
+- Configure appropriate **bucket policies** and **IAM role** for replication.
+
+### Step 1.4: Configure Replication
+- Go to the **primary bucket > Management > Replication rules**
+- Add a new replication rule:
+  - Status: Enabled
+  - Source bucket: `aluru.site`
+  - Destination bucket: `aluru.site.replication`
+  - Replicate all objects
+  - IAM role with permission to replicate
+  - Save
+
+---
+
+## 🌐 Step 2: Add Replication Bucket as CloudFront Origin
+
+### Step 2.1: Add Replication Origin
+- Navigate to **CloudFront > Distributions > Select your distribution**
+- Go to **Origins > Create origin**
+- Origin settings:
+  - **Origin domain:** Select `aluru.site.replication`
+  - **Use website endpoint:** ✅ Enabled
+- Click **Create origin**
+
+---
+
+## 🔀 Step 3: Create Origin Group for Failover
+
+### Step 3.1: Create an Origin Group
+- In the same **CloudFront distribution**, go to **Origins > Create origin group**
+- Settings:
+  - **Origin group name:** `Yaswanth`
+  - **Primary origin:** `aluru.site`
+  - **Secondary origin:** `aluru.site.replication`
+  - **Failover criteria:** `All`
+- Click **Create origin group**
+
+---
+
+## ⚙️ Step 4: Update CloudFront Behavior
+
+### Step 4.1: Modify Cache Behavior to Use Origin Group
+- Navigate to **CloudFront > Distributions > Select your distribution**
+- Go to **Behaviors > Edit the default behavior**
+- Change:
+  - **Origin and origin group:** Select `Yaswanth`
+- Save changes
+
+---
+
+## ✅ Result
+
+With this setup:
+- Primary content is served from the `aluru.site` bucket.
+- In case of failure or unavailability, CloudFront automatically switches to the `aluru.site.replication` bucket using the origin group failover mechanism.
+
+> 🔁 Improves fault tolerance and ensures high availability of your static website.
+
+
+
 ## 🧾 Project Summary for Resume
 
 **AWS Cloud Project – Static Website Hosting with Automation**
