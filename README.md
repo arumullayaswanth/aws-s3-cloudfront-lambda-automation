@@ -51,12 +51,16 @@ git clone https://github.com/arumullayaswanth/aws-s3-cloudfront-lambda-automatio
 
 Based on the provided source, a CloudFront project was discussed which aimed to improve latency and overcome latency issues by configuring a CloudFront application.
 Key aspects of this project as described in the source include:
+
 •
 Utilization of AWS Edge Locations: The project leveraged AWS edge locations offered by CloudFront. The concept is to keep content nearby these edge locations. When creating a CloudFront distribution, you have options to select whether to store content in specific edge locations or all edge locations. By selecting all edge locations, content is stored near many points globally, allowing clients to access it from nearby locations, which directly improves latencies.
+
 •
 Addressing Content Updates and TTL: The source mentions the challenge related to Time To Live (TTL) settings. If developers make changes to the source code, users might still access the old data for a period determined by the TTL (e.g., one hour). To ensure users immediately get the updated content, a mechanism is needed to refresh the edge locations.
+
 •
 Implementing Invalidations via Lambda Function: To address the content update issue, the project implemented a lambda function. This function is designed to perform invalidations. Invalidations are crucial because they update the new content into the edge locations instead of the old content immediately after developers update the source code.
+
 •
 Event-Driven Trigger: The lambda function is triggered by an event rule. This rule is set up to run the lambda function automatically whenever developers put data into a specific bucket. Once triggered, the lambda function runs the invalidations and updates the new content to the edge locations.
 This particular project used the CloudFront configuration with edge locations and an automated invalidation process via a lambda function triggered by bucket updates to ensure low latency and prompt content delivery.
